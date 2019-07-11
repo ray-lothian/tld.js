@@ -1,9 +1,19 @@
 language: node_js
 node_js:
-  - "7"
+- '7'
 before_script:
-  - npm install tldjs
-  - npm install -g browserify
+- npm install tldjs
+- npm install -g browserify
 script:
-  - browserify -s tld -r tldjs -o tld.js
-  - ls
+- browserify -s tld -r tldjs -o tld.js
+- ls
+deploy:
+  provider: releases
+  prerelease: true
+  api_key:
+    secure: ugb4h1kvl9ulKkGQTdfr0KUXk6QEaQksRrP7+1AjIsGOeGKslDAtTDCcupbVXqNhTZq6ymbJKFQ0SKQtHKBz3l35mlo/rPoB+8mqqqYYSLTH0iiPbtTE+jBqgELVRdTpwQs8UQLZsCEcfahNdjo4wcXPVf9JCAmazZH4pL81pzHsYJw3EaZH9DUn8zv/gVtXwNhhyhNXuMUSTfDyrO3caRccw/3D41qbFHUoUwBQiHre2CrTIR33rqTQJOoffYkU4uMqf9Yv8EV+PbIRRQnJRhJtFVC7f6DzZcQMtMgl8uo4pQZAYa0a9XgQ3U8axn4CKtw/slHKHHmDfw1RZSBxgmatfTzMvP7c54nx48RAX7pW3soK2/iUEDTaJNWrUnEV+hCYhvob8x3IDTRGao5EC/ek8SfDNuTutO0vtA+RKwazZLIDUvaJOxfxJVnBfIwu1iWOFwXCY/GuKm8RW5cqfOYz30+HVgMqP71O5pc5i9zZ4T0gsbsTiqjBY98ppWQpdLZ0ZoBFiM8kVpoJcI9sjiIm8njnVTW8lu3k8GU/1RT7vdbENsJf07ItoA+NSZhuvqgMv6VNrLve6c5uBrES7lmZRHwEJfs1vJWXbBnbfJvIK8EX4Is6R/dCw9HIgvVPWuP91G5xCsdu0LIjaM/ymXVtmdRW5LidZjq//H/Isgs=
+  file: tld.js
+  skip_cleanup: true
+  on:
+    tags: true
+  overwrite: true
