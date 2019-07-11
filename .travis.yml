@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "7"
+before_script:
+  - npm install tldjs
+  - npm install -g browserify
+script:
+  - browserify -s tld -r tldjs -o tld.js
+  - ls
